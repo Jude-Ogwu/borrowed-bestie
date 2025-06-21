@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
-import { X, Lock, Calendar, Clock } from "lucide-react";
+import { X, Lock, Calendar, Clock, ExternalLink } from "lucide-react";
 import { useLocation } from "wouter";
 import type { Listener } from "@shared/schema";
 
@@ -28,17 +28,24 @@ const sessionTypes: SessionType[] = [
 export function BookingModal({ isOpen, onClose, selectedListener }: BookingModalProps) {
   const [, setLocation] = useLocation();
   const [selectedSession, setSelectedSession] = useState<SessionType>(sessionTypes[0]);
-  const [selectedDate, setSelectedDate] = useState("Today");
-  const [selectedTime, setSelectedTime] = useState("3:00 PM");
   const [notes, setNotes] = useState("");
+  const [useCalendly, setUseCalendly] = useState(false);
+
+  const calendlyUrl = "https://calendly.com/ogwujude872/borrowed-bestie";
+
+  const handleBookWithCalendly = () => {
+    // Open Calendly in a new window
+    window.open(calendlyUrl, '_blank', 'width=800,height=600');
+    onClose();
+  };
 
   const handleProceedToPayment = () => {
     // Create booking data to pass to checkout
     const bookingData = {
       listener: selectedListener,
       sessionType: selectedSession,
-      date: selectedDate,
-      time: selectedTime,
+      date: "To be scheduled via Calendly",
+      time: "To be scheduled via Calendly",
       notes,
     };
     
@@ -50,10 +57,7 @@ export function BookingModal({ isOpen, onClose, selectedListener }: BookingModal
     setLocation('/checkout');
   };
 
-  const timeSlots = [
-    "9:00 AM", "11:30 AM", "2:00 PM", "3:00 PM", 
-    "4:30 PM", "6:00 PM", "7:30 PM", "9:00 PM"
-  ];
+
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -65,6 +69,9 @@ export function BookingModal({ isOpen, onClose, selectedListener }: BookingModal
               <X className="h-5 w-5" />
             </Button>
           </DialogTitle>
+          <DialogDescription>
+            Choose your session type and schedule your time with {selectedListener?.name || 'a listener'}.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-8">
@@ -98,51 +105,51 @@ export function BookingModal({ isOpen, onClose, selectedListener }: BookingModal
             </div>
           </div>
 
-          {/* Calendar View */}
+          {/* Booking Options */}
           <div>
-            <h3 className="text-lg font-semibold text-slate-800 mb-4">Select Date & Time</h3>
-            <div className="bg-slate-50 rounded-lg p-6">
-              <div className="grid grid-cols-7 gap-2 mb-4">
-                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                  <div key={day} className="text-center text-sm font-medium text-slate-600 py-2">
-                    {day}
-                  </div>
-                ))}
+            <h3 className="text-lg font-semibold text-slate-800 mb-4">Choose Your Booking Method</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="border-2 border-teal-500 bg-teal-50 rounded-lg p-6 text-center">
+                <Calendar className="w-12 h-12 text-teal-600 mx-auto mb-3" />
+                <h4 className="font-semibold text-slate-800 mb-2">Real-Time Booking</h4>
+                <p className="text-sm text-slate-600 mb-4">
+                  Book directly with live availability using our Calendly integration
+                </p>
+                <Button
+                  onClick={handleBookWithCalendly}
+                  className="w-full bg-teal-500 hover:bg-teal-600 text-white"
+                >
+                  <ExternalLink className="mr-2" size={16} />
+                  Book with Calendly
+                </Button>
               </div>
-              <div className="grid grid-cols-7 gap-2">
-                {Array.from({ length: 14 }, (_, i) => i + 1).map((day) => (
-                  <button
-                    key={day}
-                    onClick={() => setSelectedDate(`Dec ${day}`)}
-                    className={`text-center py-2 rounded transition-colors ${
-                      day === 13 ? "bg-teal-100 font-semibold text-teal-700" : "hover:bg-teal-100"
-                    }`}
-                  >
-                    {day}
-                  </button>
-                ))}
+
+              <div className="border-2 border-slate-200 rounded-lg p-6 text-center">
+                <Clock className="w-12 h-12 text-slate-500 mx-auto mb-3" />
+                <h4 className="font-semibold text-slate-800 mb-2">Manual Booking</h4>
+                <p className="text-sm text-slate-600 mb-4">
+                  Submit your preference and we'll confirm availability
+                </p>
+                <Button
+                  onClick={() => setUseCalendly(false)}
+                  variant="outline"
+                  className="w-full"
+                  disabled={!useCalendly}
+                >
+                  Continue with Manual
+                </Button>
               </div>
             </div>
 
-            {/* Time Slots */}
-            <div className="mt-4">
-              <h4 className="font-medium text-slate-700 mb-3">Available Times ({selectedDate})</h4>
-              <div className="grid grid-cols-4 gap-2">
-                {timeSlots.map((time) => (
-                  <button
-                    key={time}
-                    onClick={() => setSelectedTime(time)}
-                    className={`p-2 text-sm border rounded transition-colors ${
-                      selectedTime === time
-                        ? "border-teal-500 bg-teal-50 text-teal-700 font-medium"
-                        : "border-slate-200 hover:border-teal-500 hover:bg-teal-50"
-                    }`}
-                  >
-                    {time}
-                  </button>
-                ))}
+            {!useCalendly && (
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <p className="text-sm text-amber-800">
+                  <strong>Note:</strong> Manual booking requires confirmation. We'll email you within 2 hours 
+                  to confirm your preferred time slot. For instant booking, use the Calendly option above.
+                </p>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Session Notes */}
@@ -170,8 +177,8 @@ export function BookingModal({ isOpen, onClose, selectedListener }: BookingModal
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-600">Date & Time:</span>
-                <span className="font-medium">{selectedDate}, {selectedTime}</span>
+                <span className="text-slate-600">Scheduling:</span>
+                <span className="font-medium">Via Calendly (live availability)</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-600">Duration:</span>
@@ -190,7 +197,7 @@ export function BookingModal({ isOpen, onClose, selectedListener }: BookingModal
             className="w-full bg-gradient-teal text-white py-4 text-lg hover:bg-teal-600 transition-all transform hover:scale-105"
           >
             <Lock className="mr-2" size={20} />
-            Secure Payment with Stripe
+            Continue to Payment
           </Button>
 
           <p className="text-xs text-slate-500 text-center">

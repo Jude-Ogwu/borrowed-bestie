@@ -61,10 +61,10 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-warm">
+      <section className="relative overflow-hidden bg-gradient-warm dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
         {/* Background decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400/20 to-teal-500/20 rounded-full blur-3xl transform translate-x-32 -translate-y-32"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-orange-400/20 to-teal-500/20 rounded-full blur-3xl transform -translate-x-32 translate-y-32"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400/10 to-teal-500/10 dark:from-purple-400/5 dark:to-teal-500/5 rounded-full blur-3xl transform translate-x-32 -translate-y-32"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-orange-400/10 to-teal-500/10 dark:from-orange-400/5 dark:to-teal-500/5 rounded-full blur-3xl transform -translate-x-32 translate-y-32"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
