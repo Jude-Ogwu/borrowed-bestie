@@ -1,0 +1,115 @@
+Below is a refined, end‑to‑end feature list paired with a visual “storyboard” of the user journey through the Borrowed Bestie MVP. Each numbered storyboard step maps to the pages and features you’ll build.
+
+---
+
+## 1. User lands on Homepage
+
+**Features**
+
+* Hero banner with soft background imagery + “Sometimes, you just need someone to talk to.”
+* Brief welcome video or illustration loop
+* Primary CTAs: **Book a Call** ▶︎ **Meet Our Besties**
+* Scrolling carousel of real user testimonials (auto‑rotate + manual controls)
+* 3‑step “How It Works” visual block
+
+---
+
+## 2. User clicks “Book a Call” → Booking Page
+
+**Features**
+
+* Embedded Calendly widget **OR** custom booking UI
+* Filter controls:
+
+  * Session length (15/30/60 min)
+  * Listener specialty (stress, grief, career, etc.)
+  * Language preference
+* Live availability grid synced via listener calendars
+* “Proceed to Payment” button (disabled until slot selected)
+* Stripe checkout integration (test mode)
+* Post‑payment confirmation:
+
+  * In‑app success banner
+  * Trigger confirmation email + calendar invite
+
+---
+
+## 3. User browses “Meet Our Besties”
+
+**Features**
+
+* Responsive grid of listener cards
+* Card details: photo/avatar, name, short bio, specialties, languages
+* “Book Me” button linking directly to that listener’s calendar view
+* Option to “Filter by skill” or “Search by name”
+
+---
+
+## 4. User views “About Us”
+
+**Features**
+
+* Founder’s story section (Annie’s journey + mission)
+* Company mission, vision & core values
+* Social impact meter (e.g. “10 sessions = 1 donation”)
+* Press logos / blog excerpt carousel
+
+---
+
+## 5. User checks “FAQs & Safety”
+
+**Features**
+
+* Accordion or tabbed layout for FAQs
+* Clear disclaimer: “This is peer support, not therapy”
+* Confidentiality & privacy guidelines
+* Cancellation & refund policy
+* Emergency resources & hotlines
+
+---
+
+## 6. (Future‑stub) Shop Page
+
+**Features**
+
+* Placeholder grid: care packages, digital journals, audio affirmations
+* “Coming Soon” overlay on unavailable items
+
+---
+
+## 7. User opens “Contact / Help”
+
+**Features**
+
+* Simple contact form (Name, Email, Message → Typeform or Netlify Forms)
+* Quick‑access WhatsApp / email chat button
+* Feedback & suggestions textarea
+
+---
+
+## 8. (Phase 2 stub) Admin Dashboard
+
+**Features**
+
+* Secure, protected route (password or SSO)
+* Listener management: add/edit profiles, availability
+* View anonymized session logs & user feedback
+* Earnings dashboard (per‑listener/monthly)
+* User management & support tickets
+
+---
+
+### Visual Storyboard Sequence
+
+1. **Welcome** → homepage hero
+2. **Learn** → “How it works” scroll block
+3. **Explore** → meet/listener profiles
+4. **Select** → click “Book a Call” or “Book Me”
+5. **Schedule** → choose date/time + filters
+6. **Pay** → Stripe checkout → success screen
+7. **Confirm** → email + calendar invite lands in inbox
+8. **Follow‑up** → post‑session survey (future)
+
+---
+
+Feel free to tweak or expand any feature—once you’re happy with this refined scope, we can start mapping components and data models!
