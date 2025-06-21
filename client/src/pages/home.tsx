@@ -70,29 +70,29 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
               {/* Trust indicators */}
-              <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 mb-8 text-sm text-slate-600">
+              <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 mb-8 text-sm text-slate-600 dark:text-slate-300">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="text-teal-500" size={16} />
+                  <CheckCircle className="text-teal-500 dark:text-teal-400" size={16} />
                   <span>500+ conversations</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Clock className="text-teal-500" size={16} />
+                  <Clock className="text-teal-500 dark:text-teal-400" size={16} />
                   <span>Available 24/7</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Shield className="text-teal-500" size={16} />
+                  <Shield className="text-teal-500 dark:text-teal-400" size={16} />
                   <span>Fully confidential</span>
                 </div>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-bold text-slate-800 dark:text-white mb-6 leading-tight">
                 Sometimes, you just need{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-coral-500">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-500 dark:from-teal-400 dark:to-emerald-400">
                   someone to talk to
                 </span>
               </h1>
               
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+              <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
                 Connect with trained listeners for confidential peer support. No therapy, no judgment—just genuine human connection when you need it most.
               </p>
               
@@ -154,11 +154,11 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-24 bg-white">
+      <section id="how-it-works" className="py-24 bg-white dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">How It Works</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">How It Works</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
               Simple, safe, and secure. Get the support you need in just three easy steps.
             </p>
           </div>
@@ -174,8 +174,8 @@ export default function Home() {
                   1
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold text-slate-800 mb-4">Choose Your Bestie</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">Choose Your Bestie</h3>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                 Browse our community of trained listeners and find someone who specializes in what you're going through.
               </p>
             </div>
@@ -190,8 +190,8 @@ export default function Home() {
                   2
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold text-slate-800 mb-4">Book & Pay Securely</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">Book & Pay Securely</h3>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                 Select your preferred time slot and session length. Pay securely through our encrypted payment system.
               </p>
             </div>
@@ -206,8 +206,8 @@ export default function Home() {
                   3
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold text-slate-800 mb-4">Connect & Chat</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">Connect & Chat</h3>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                 Join your scheduled session and have a meaningful conversation with someone who genuinely cares.
               </p>
             </div>
@@ -216,11 +216,11 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-gradient-to-r from-teal-50 to-orange-50">
+      <section className="py-24 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-800 dark:to-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">What People Are Saying</h2>
-            <p className="text-xl text-slate-600">Real stories from our community</p>
+            <h2 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">What People Are Saying</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300">Real stories from our community</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -234,7 +234,7 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                  <p className="text-slate-700 mb-6 italic">"{testimonial.text}"</p>
+                  <p className="text-slate-700 dark:text-slate-300 mb-6 italic">"{testimonial.text}"</p>
                   <div className="flex items-center">
                     <img
                       src={testimonial.avatar}
@@ -242,8 +242,8 @@ export default function Home() {
                       className="w-12 h-12 rounded-full mr-4"
                     />
                     <div>
-                      <p className="font-semibold text-slate-800">{testimonial.author}</p>
-                      <p className="text-sm text-slate-500">Verified user</p>
+                      <p className="font-semibold text-slate-800 dark:text-white">{testimonial.author}</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">Verified user</p>
                     </div>
                   </div>
                 </CardContent>
@@ -254,11 +254,11 @@ export default function Home() {
       </section>
 
       {/* Featured Listeners Section */}
-      <section id="listeners" className="py-24 bg-white">
+      <section id="listeners" className="py-24 bg-white dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">Meet Our Besties</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">Meet Our Besties</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               Our trained listeners come from diverse backgrounds and specialize in different areas of support. 
               Find someone who resonates with you.
             </p>

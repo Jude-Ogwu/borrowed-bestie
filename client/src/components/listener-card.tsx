@@ -26,7 +26,7 @@ export function ListenerCard({ listener, onBookClick }: ListenerCardProps) {
   };
 
   return (
-    <Card className="overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-1">
+    <Card className="overflow-hidden hover:shadow-xl dark:hover:shadow-2xl transition-all transform hover:-translate-y-1 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
       <div className="aspect-[4/3] overflow-hidden">
         <img
           src={listener.imageUrl}
@@ -36,10 +36,10 @@ export function ListenerCard({ listener, onBookClick }: ListenerCardProps) {
       </div>
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-xl font-semibold text-slate-800">{listener.name}</h3>
+          <h3 className="text-xl font-semibold text-slate-800 dark:text-white">{listener.name}</h3>
           <div className="flex items-center space-x-1">
             <Star className="text-yellow-400" size={16} fill="currentColor" />
-            <span className="text-sm text-slate-600 font-medium">{listener.rating}</span>
+            <span className="text-sm text-slate-600 dark:text-slate-300 font-medium">{listener.rating}</span>
           </div>
         </div>
 
@@ -55,16 +55,16 @@ export function ListenerCard({ listener, onBookClick }: ListenerCardProps) {
           ))}
         </div>
 
-        <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-3">
+        <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed line-clamp-3">
           {listener.bio}
         </p>
 
         <div className="flex items-center justify-between mb-4 text-sm">
-          <div className="flex items-center text-slate-500">
+          <div className="flex items-center text-slate-500 dark:text-slate-400">
             <Clock size={14} className="mr-1" />
             Next: Today 3:00 PM
           </div>
-          <div className="flex items-center text-slate-500">
+          <div className="flex items-center text-slate-500 dark:text-slate-400">
             <Globe size={14} className="mr-1" />
             {listener.languages.slice(0, 2).join(", ")}
           </div>

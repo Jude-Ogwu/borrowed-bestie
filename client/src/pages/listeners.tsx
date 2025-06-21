@@ -54,8 +54,8 @@ export default function Listeners() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-slate-800 mb-4">Meet Our Besties</h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">Meet Our Besties</h1>
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             Our trained listeners come from diverse backgrounds and specialize in different areas of support. 
             Find someone who resonates with you.
           </p>
@@ -70,12 +70,12 @@ export default function Listeners() {
                 placeholder="Search by name or expertise..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="pl-10 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700"
               />
             </div>
             <div className="flex items-center gap-2">
-              <Filter className="text-slate-500" size={20} />
-              <span className="text-sm text-slate-600">Filter by specialty:</span>
+              <Filter className="text-slate-500 dark:text-slate-400" size={20} />
+              <span className="text-sm text-slate-600 dark:text-slate-400">Filter by specialty:</span>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ export default function Listeners() {
 
         {/* Results Count */}
         <div className="mb-8">
-          <p className="text-slate-600">
+          <p className="text-slate-600 dark:text-slate-400">
             Showing {filteredListeners.length} of {listeners.length} listeners
             {selectedSpecialty !== "All" && ` specializing in ${selectedSpecialty}`}
           </p>
@@ -120,7 +120,7 @@ export default function Listeners() {
         {/* No Results */}
         {filteredListeners.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-slate-600 text-lg mb-4">
+            <p className="text-slate-600 dark:text-slate-400 text-lg mb-4">
               No listeners found matching your criteria.
             </p>
             <Button
@@ -129,6 +129,7 @@ export default function Listeners() {
                 setSelectedSpecialty("All");
               }}
               variant="outline"
+              className="border-slate-200 dark:border-slate-700"
             >
               Clear Filters
             </Button>
