@@ -53,7 +53,7 @@ export default function Home() {
     {
       text: "I was skeptical at first, but my session with Lisa exceeded all expectations. She created such a safe space for me to share my anxiety about starting college.",
       author: "Sophia L.",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b567?w=48&h=48&fit=crop&crop=face",
+      avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=48&h=48&fit=crop&crop=face",
       rating: 5
     }
   ];
