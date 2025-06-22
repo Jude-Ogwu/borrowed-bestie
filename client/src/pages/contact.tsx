@@ -219,15 +219,15 @@ export default function Contact() {
           </Card>
 
           {/* Feedback Section */}
-          <Card className="shadow-lg">
+          <Card className="shadow-lg bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
             <CardContent className="p-8">
-              <h3 className="text-xl font-semibold text-slate-800 mb-4">Help us improve</h3>
-              <p className="text-slate-600 mb-6">
+              <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-4">Help us improve</h3>
+              <p className="text-slate-600 dark:text-slate-300 mb-6">
                 Your feedback shapes our platform. Share your suggestions or report any issues.
               </p>
               <Button
                 variant="outline"
-                className="w-full hover:bg-slate-100"
+                className="w-full hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300"
                 onClick={() => form.setValue("subject", "Feedback")}
               >
                 Give Feedback
@@ -236,10 +236,10 @@ export default function Contact() {
           </Card>
 
           {/* Office Hours */}
-          <Card className="bg-teal-50 border-teal-200">
+          <Card className="bg-teal-50 dark:bg-teal-900/20 border-teal-200 dark:border-teal-800">
             <CardContent className="p-8">
-              <h3 className="text-xl font-semibold text-slate-800 mb-4">Support Hours</h3>
-              <div className="space-y-2 text-slate-700">
+              <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-4">Support Hours</h3>
+              <div className="space-y-2 text-slate-700 dark:text-slate-300">
                 <div className="flex justify-between">
                   <span>Monday - Friday</span>
                   <span>9:00 AM - 6:00 PM PST</span>
@@ -253,7 +253,7 @@ export default function Contact() {
                   <span>Closed</span>
                 </div>
               </div>
-              <p className="text-sm text-slate-600 mt-4">
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-4">
                 For urgent matters outside these hours, please use our emergency resources listed in our FAQ.
               </p>
             </CardContent>

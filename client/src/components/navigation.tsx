@@ -31,7 +31,7 @@ export function Navigation() {
       if (location === '/') {
         scrollToSection(item.sectionId);
       } else {
-        window.location.href = '/#' + item.sectionId;
+        window.location.href = '/#how-it-works';
       }
     }
     setIsMobileMenuOpen(false);
