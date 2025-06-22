@@ -12,7 +12,7 @@ export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "/#how-it-works", label: "How It Works" },
+    { href: "/", label: "How It Works", isScroll: true, sectionId: "how-it-works" },
     { href: "/listeners", label: "Our Besties" },
     { href: "/about", label: "About" },
     { href: "/faq", label: "Safety & FAQ" },
@@ -26,13 +26,12 @@ export function Navigation() {
     }
   };
 
-  const handleNavClick = (href: string) => {
-    if (href.startsWith('/#')) {
-      const sectionId = href.substring(2);
+  const handleNavClick = (item: any) => {
+    if (item.isScroll) {
       if (location === '/') {
-        scrollToSection(sectionId);
+        scrollToSection(item.sectionId);
       } else {
-        window.location.href = href;
+        window.location.href = '/#' + item.sectionId;
       }
     }
     setIsMobileMenuOpen(false);
@@ -53,13 +52,23 @@ export function Navigation() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => handleNavClick(item.href)}
-                  className="text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
-                >
-                  {item.label}
-                </button>
+                item.isScroll ? (
+                  <button
+                    key={item.href}
+                    onClick={() => handleNavClick(item)}
+                    className="text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
             </div>
 
@@ -79,16 +88,27 @@ export function Navigation() {
                     <Menu className="h-5 w-5" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent>
+                <SheetContent className="bg-white dark:bg-slate-900">
                   <div className="flex flex-col space-y-4 mt-8">
                     {navItems.map((item) => (
-                      <button
-                        key={item.href}
-                        onClick={() => handleNavClick(item.href)}
-                        className="text-slate-600 hover:text-teal-600 transition-colors text-left"
-                      >
-                        {item.label}
-                      </button>
+                      item.isScroll ? (
+                        <button
+                          key={item.href}
+                          onClick={() => handleNavClick(item)}
+                          className="text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors text-left text-lg"
+                        >
+                          {item.label}
+                        </button>
+                      ) : (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors text-left text-lg"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      )
                     ))}
                     <Button
                       onClick={() => {

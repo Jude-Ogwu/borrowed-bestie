@@ -72,7 +72,7 @@ export class MemStorage implements IStorage {
         languages: ["English", "中文"],
         rating: "4.9",
         reviewCount: 127,
-        imageUrl: "https://images.unsplash.com/photo-1594824388647-82b8e2cd95b9?w=400&h=400&fit=crop&crop=face",
+        imageUrl: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face",
         isAvailable: true,
       },
       {

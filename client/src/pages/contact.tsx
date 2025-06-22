@@ -74,15 +74,15 @@ export default function Contact() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-slate-800 mb-4">Get in Touch</h1>
-        <p className="text-xl text-slate-600">Have questions? We're here to help.</p>
+        <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">Get in Touch</h1>
+        <p className="text-xl text-slate-600 dark:text-slate-300">Have questions? We're here to help.</p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-12">
         {/* Contact Form */}
-        <Card className="shadow-lg">
+        <Card className="shadow-lg bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
           <CardContent className="p-8">
-            <h2 className="text-2xl font-semibold text-slate-800 mb-6">Send us a message</h2>
+            <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6">Send us a message</h2>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -181,37 +181,37 @@ export default function Contact() {
 
         {/* Contact Info */}
         <div className="space-y-8">
-          <Card className="shadow-lg">
+          <Card className="shadow-lg bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-semibold text-slate-800 mb-6">Quick Support</h3>
+              <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6">Quick Support</h3>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
-                    <MessageSquare className="text-teal-600" size={24} />
+                  <div className="w-12 h-12 bg-teal-100 dark:bg-teal-900/20 rounded-full flex items-center justify-center">
+                    <MessageSquare className="text-teal-600 dark:text-teal-400" size={24} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">Live Chat</h4>
-                    <p className="text-slate-600">Available during business hours</p>
+                    <h4 className="font-semibold text-slate-800 dark:text-white">Live Chat</h4>
+                    <p className="text-slate-600 dark:text-slate-300">Available during business hours</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-coral-100 rounded-full flex items-center justify-center">
-                    <Mail className="text-coral-600" size={24} />
+                  <div className="w-12 h-12 bg-coral-100 dark:bg-coral-900/20 rounded-full flex items-center justify-center">
+                    <Mail className="text-coral-600 dark:text-coral-400" size={24} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">Email</h4>
-                    <p className="text-slate-600">hello@borrowedbestie.com</p>
+                    <h4 className="font-semibold text-slate-800 dark:text-white">Email</h4>
+                    <p className="text-slate-600 dark:text-slate-300">hello@borrowedbestie.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Clock className="text-purple-600" size={24} />
+                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center">
+                    <Clock className="text-purple-600 dark:text-purple-400" size={24} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">Response Time</h4>
-                    <p className="text-slate-600">Usually within 2 hours</p>
+                    <h4 className="font-semibold text-slate-800 dark:text-white">Response Time</h4>
+                    <p className="text-slate-600 dark:text-slate-300">Usually within 2 hours</p>
                   </div>
                 </div>
               </div>

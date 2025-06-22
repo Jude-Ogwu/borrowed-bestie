@@ -6,8 +6,8 @@ export default function About() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-slate-800 mb-4">Our Story</h1>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">Our Story</h1>
+        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
           Born from a personal journey of discovering the power of human connection and genuine listening.
         </p>
       </div>
@@ -16,8 +16,8 @@ export default function About() {
       <section className="mb-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl font-bold text-slate-800 mb-6">Meet Annie, Our Founder</h2>
-            <div className="space-y-6 text-slate-600">
+            <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-6">Meet Annie, Our Founder</h2>
+            <div className="space-y-6 text-slate-600 dark:text-slate-300">
               <p className="text-lg leading-relaxed">
                 Hi, I'm Annie, and I created Borrowed Bestie after experiencing firsthand how powerful it can be to simply have someone listen—really listen—when you're going through a tough time.
               </p>
@@ -41,8 +41,8 @@ export default function About() {
             />
             
             {/* Impact metrics overlay */}
-            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
-              <h4 className="font-semibold text-slate-800 mb-2">Our Impact</h4>
+            <div className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-xl">
+              <h4 className="font-semibold text-slate-800 dark:text-white mb-2">Our Impact</h4>
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-teal-600">500+</div>

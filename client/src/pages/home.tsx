@@ -276,10 +276,10 @@ export default function Home() {
           
           <div className="text-center mt-12">
             <Button
-              onClick={() => scrollToSection('listeners')}
+              onClick={() => window.location.href = '/listeners'}
               variant="outline"
               size="lg"
-              className="text-slate-700 hover:bg-slate-100"
+              className="text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-300 dark:border-slate-600"
             >
               View All Besties <ArrowRight className="ml-2" size={16} />
             </Button>

@@ -78,20 +78,20 @@ export default function FAQ() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-slate-800 mb-4">Safety & FAQ</h1>
-        <p className="text-xl text-slate-600">Your safety and comfort are our top priorities</p>
+        <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">Safety & FAQ</h1>
+        <p className="text-xl text-slate-600 dark:text-slate-300">Your safety and comfort are our top priorities</p>
       </div>
 
       {/* Important Safety Notice */}
-      <Card className="bg-orange-50 border-l-4 border-orange-500 mb-12">
+      <Card className="bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-500 mb-12">
         <CardContent className="p-6">
           <div className="flex items-start">
             <AlertTriangle className="text-orange-500 mr-3 mt-1 flex-shrink-0" size={24} />
             <div>
-              <h3 className="text-lg font-semibold text-orange-800 mb-2">
+              <h3 className="text-lg font-semibold text-orange-800 dark:text-orange-200 mb-2">
                 Important: This is peer support, not therapy
               </h3>
-              <p className="text-orange-700">
+              <p className="text-orange-700 dark:text-orange-300">
                 Our listeners provide emotional support and a caring ear, but they are not licensed therapists 
                 or medical professionals. If you're experiencing a mental health crisis, please contact emergency 
                 services or a crisis hotline immediately.
@@ -102,28 +102,28 @@ export default function FAQ() {
       </Card>
 
       {/* Emergency Resources */}
-      <Card className="bg-red-50 border border-red-200 mb-12">
+      <Card className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 mb-12">
         <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+          <h3 className="text-lg font-semibold text-red-800 dark:text-red-200 mb-4 flex items-center">
             <Phone className="mr-2" size={20} />
             Emergency Resources
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-medium text-red-700 mb-3">United States</h4>
+              <h4 className="font-medium text-red-700 dark:text-red-300 mb-3">United States</h4>
               <ul className="space-y-2">
                 {emergencyResources.us.map((resource, index) => (
-                  <li key={index} className="text-red-600 text-sm">
+                  <li key={index} className="text-red-600 dark:text-red-400 text-sm">
                     <strong>{resource.name}:</strong> {resource.number}
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="font-medium text-red-700 mb-3">International</h4>
+              <h4 className="font-medium text-red-700 dark:text-red-300 mb-3">International</h4>
               <ul className="space-y-2">
                 {emergencyResources.international.map((resource, index) => (
-                  <li key={index} className="text-red-600 text-sm">
+                  <li key={index} className="text-red-600 dark:text-red-400 text-sm">
                     <strong>{resource.name}:</strong> {resource.number}
                   </li>
                 ))}
@@ -135,10 +135,10 @@ export default function FAQ() {
 
       {/* FAQ Section */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-800 mb-6">Frequently Asked Questions</h2>
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Frequently Asked Questions</h2>
         
         {faqData.map((faq) => (
-          <Card key={faq.id} className="bg-slate-50">
+          <Card key={faq.id} className="bg-slate-50 dark:bg-slate-800">
             <Collapsible
               open={openItems.has(faq.id)}
               onOpenChange={() => toggleItem(faq.id)}
@@ -146,13 +146,13 @@ export default function FAQ() {
               <CollapsibleTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between p-6 h-auto text-left hover:bg-slate-100"
+                  className="w-full justify-between p-6 h-auto text-left hover:bg-slate-100 dark:hover:bg-slate-700"
                 >
-                  <h3 className="text-lg font-semibold text-slate-800 pr-4">
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-white pr-4">
                     {faq.question}
                   </h3>
                   <ChevronDown
-                    className={`text-slate-500 transition-transform flex-shrink-0 ${
+                    className={`text-slate-500 dark:text-slate-400 transition-transform flex-shrink-0 ${
                       openItems.has(faq.id) ? "rotate-180" : ""
                     }`}
                     size={20}
@@ -161,7 +161,7 @@ export default function FAQ() {
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <div className="px-6 pb-6">
-                  <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{faq.answer}</p>
                 </div>
               </CollapsibleContent>
             </Collapsible>
@@ -170,13 +170,13 @@ export default function FAQ() {
       </div>
 
       {/* Additional Safety Information */}
-      <Card className="mt-12 bg-teal-50 border-teal-200">
+      <Card className="mt-12 bg-teal-50 dark:bg-teal-900/20 border-teal-200 dark:border-teal-800">
         <CardContent className="p-8 text-center">
-          <MessageSquare className="w-12 h-12 text-teal-600 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-slate-800 mb-4">
+          <MessageSquare className="w-12 h-12 text-teal-600 dark:text-teal-400 mx-auto mb-4" />
+          <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-4">
             Still have questions?
           </h3>
-          <p className="text-slate-600 mb-6">
+          <p className="text-slate-600 dark:text-slate-300 mb-6">
             We're here to help. Reach out to our support team for any additional questions or concerns.
           </p>
           <Button className="bg-teal-500 hover:bg-teal-600 text-white">
