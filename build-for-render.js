@@ -235,17 +235,16 @@ if (!fs.existsSync(indexPath)) {
               card.className = 'listener-card';
               
               const specialtiesHtml = listener.specialties.map(specialty => 
-                \`<span class="tag">\${specialty}</span>\`
+                '<span class="tag">' + specialty + '</span>'
               ).join('');
               
-              card.innerHTML = \`
-                <img src="\${listener.imageUrl}" alt="\${listener.name}" class="listener-img">
-                <div class="listener-info">
-                  <div class="listener-name">\${listener.name}</div>
-                  <div class="listener-bio">\${listener.bio}</div>
-                  <div class="tags">\${specialtiesHtml}</div>
-                </div>
-              \`;
+              card.innerHTML = 
+                '<img src="' + listener.imageUrl + '" alt="' + listener.name + '" class="listener-img">' +
+                '<div class="listener-info">' +
+                  '<div class="listener-name">' + listener.name + '</div>' +
+                  '<div class="listener-bio">' + listener.bio + '</div>' +
+                  '<div class="tags">' + specialtiesHtml + '</div>' +
+                '</div>';
               
               listenersContainer.appendChild(card);
             });
