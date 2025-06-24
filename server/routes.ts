@@ -1,8 +1,22 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import Stripe from "stripe";
-import { storage } from "./storage";
-import { insertBookingSchema, insertContactMessageSchema } from "@shared/schema";
+
+// Import from relative paths for better compatibility
+let storage, insertBookingSchema, insertContactMessageSchema;
+
+try {
+  // Try to require the modules
+  const storageModule = require('./storage');
+  const schemaModule = require('../shared/schema');
+  
+  storage = storageModule.storage;
+  insertBookingSchema = schemaModule.insertBookingSchema;
+  insertContactMessageSchema = schemaModule.insertContactMessageSchema;
+} catch (error) {
+  console.error("Error importing modules:", error);
+  process.exit(1);
+}
 
 // Initialize Stripe only if secret key is provided
 let stripe: Stripe | null = null;

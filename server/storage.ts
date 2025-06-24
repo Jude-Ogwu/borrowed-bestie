@@ -1,49 +1,50 @@
-import { 
-  users, 
-  listeners, 
-  bookings, 
-  contactMessages,
-  type User, 
-  type InsertUser,
-  type Listener,
-  type InsertListener,
-  type Booking,
-  type InsertBooking,
-  type ContactMessage,
-  type InsertContactMessage
-} from "@shared/schema";
+// Import from relative paths for better compatibility
+let users, listeners, bookings, contactMessages;
+
+try {
+  // Try to require the schema module
+  const schemaModule = require('../shared/schema');
+  
+  users = schemaModule.users;
+  listeners = schemaModule.listeners;
+  bookings = schemaModule.bookings;
+  contactMessages = schemaModule.contactMessages;
+} catch (error) {
+  console.error("Error importing schema:", error);
+  process.exit(1);
+}
 
 export interface IStorage {
   // Users
-  getUser(id: number): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  getUserByEmail(email: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getUser(id: number): Promise<any | undefined>;
+  getUserByUsername(username: string): Promise<any | undefined>;
+  getUserByEmail(email: string): Promise<any | undefined>;
+  createUser(user: any): Promise<any>;
   
   // Listeners
-  getAllListeners(): Promise<Listener[]>;
-  getListener(id: number): Promise<Listener | undefined>;
-  getListenersBySpecialty(specialty: string): Promise<Listener[]>;
-  createListener(listener: InsertListener): Promise<Listener>;
+  getAllListeners(): Promise<any[]>;
+  getListener(id: number): Promise<any | undefined>;
+  getListenersBySpecialty(specialty: string): Promise<any[]>;
+  createListener(listener: any): Promise<any>;
   
   // Bookings
-  getBooking(id: number): Promise<Booking | undefined>;
-  getBookingsByUser(userId: number): Promise<Booking[]>;
-  getBookingsByListener(listenerId: number): Promise<Booking[]>;
-  createBooking(booking: InsertBooking): Promise<Booking>;
-  updateBookingStatus(id: number, status: string): Promise<Booking | undefined>;
-  updateBookingPaymentIntent(id: number, paymentIntentId: string): Promise<Booking | undefined>;
+  getBooking(id: number): Promise<any | undefined>;
+  getBookingsByUser(userId: number): Promise<any[]>;
+  getBookingsByListener(listenerId: number): Promise<any[]>;
+  createBooking(booking: any): Promise<any>;
+  updateBookingStatus(id: number, status: string): Promise<any | undefined>;
+  updateBookingPaymentIntent(id: number, paymentIntentId: string): Promise<any | undefined>;
   
   // Contact Messages
-  createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
-  getAllContactMessages(): Promise<ContactMessage[]>;
+  createContactMessage(message: any): Promise<any>;
+  getAllContactMessages(): Promise<any[]>;
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private listeners: Map<number, Listener>;
-  private bookings: Map<number, Booking>;
-  private contactMessages: Map<number, ContactMessage>;
+  private users: Map<number, any>;
+  private listeners: Map<number, any>;
+  private bookings: Map<number, any>;
+  private contactMessages: Map<number, any>;
   private currentUserId: number;
   private currentListenerId: number;
   private currentBookingId: number;
@@ -64,7 +65,7 @@ export class MemStorage implements IStorage {
   }
 
   private async initializeSampleData() {
-    const sampleListeners: InsertListener[] = [
+    const sampleListeners: any[] = [
       {
         name: "Sarah Chen",
         bio: "Licensed social worker with 8 years experience. Specializes in anxiety management and workplace stress. Fluent in English and Mandarin.",
@@ -133,25 +134,25 @@ export class MemStorage implements IStorage {
   }
 
   // Users
-  async getUser(id: number): Promise<User | undefined> {
+  async getUser(id: number): Promise<any | undefined> {
     return this.users.get(id);
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
+  async getUserByUsername(username: string): Promise<any | undefined> {
     return Array.from(this.users.values()).find(
       (user) => user.username === username,
     );
   }
 
-  async getUserByEmail(email: string): Promise<User | undefined> {
+  async getUserByEmail(email: string): Promise<any | undefined> {
     return Array.from(this.users.values()).find(
       (user) => user.email === email,
     );
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
+  async createUser(insertUser: any): Promise<any> {
     const id = this.currentUserId++;
-    const user: User = { 
+    const user: any = { 
       ...insertUser, 
       id,
       createdAt: new Date()
@@ -161,23 +162,23 @@ export class MemStorage implements IStorage {
   }
 
   // Listeners
-  async getAllListeners(): Promise<Listener[]> {
+  async getAllListeners(): Promise<any[]> {
     return Array.from(this.listeners.values());
   }
 
-  async getListener(id: number): Promise<Listener | undefined> {
+  async getListener(id: number): Promise<any | undefined> {
     return this.listeners.get(id);
   }
 
-  async getListenersBySpecialty(specialty: string): Promise<Listener[]> {
+  async getListenersBySpecialty(specialty: string): Promise<any[]> {
     return Array.from(this.listeners.values()).filter(
       listener => listener.specialties.includes(specialty)
     );
   }
 
-  async createListener(insertListener: InsertListener): Promise<Listener> {
+  async createListener(insertListener: any): Promise<any> {
     const id = this.currentListenerId++;
-    const listener: Listener = { 
+    const listener: any = { 
       ...insertListener, 
       id,
       rating: insertListener.rating || null,
@@ -189,25 +190,25 @@ export class MemStorage implements IStorage {
   }
 
   // Bookings
-  async getBooking(id: number): Promise<Booking | undefined> {
+  async getBooking(id: number): Promise<any | undefined> {
     return this.bookings.get(id);
   }
 
-  async getBookingsByUser(userId: number): Promise<Booking[]> {
+  async getBookingsByUser(userId: number): Promise<any[]> {
     return Array.from(this.bookings.values()).filter(
       booking => booking.userId === userId
     );
   }
 
-  async getBookingsByListener(listenerId: number): Promise<Booking[]> {
+  async getBookingsByListener(listenerId: number): Promise<any[]> {
     return Array.from(this.bookings.values()).filter(
       booking => booking.listenerId === listenerId
     );
   }
 
-  async createBooking(insertBooking: InsertBooking): Promise<Booking> {
+  async createBooking(insertBooking: any): Promise<any> {
     const id = this.currentBookingId++;
-    const booking: Booking = { 
+    const booking: any = { 
       ...insertBooking, 
       id,
       createdAt: new Date(),
@@ -220,7 +221,7 @@ export class MemStorage implements IStorage {
     return booking;
   }
 
-  async updateBookingStatus(id: number, status: string): Promise<Booking | undefined> {
+  async updateBookingStatus(id: number, status: string): Promise<any | undefined> {
     const booking = this.bookings.get(id);
     if (booking) {
       booking.status = status;
@@ -230,7 +231,7 @@ export class MemStorage implements IStorage {
     return undefined;
   }
 
-  async updateBookingPaymentIntent(id: number, paymentIntentId: string): Promise<Booking | undefined> {
+  async updateBookingPaymentIntent(id: number, paymentIntentId: string): Promise<any | undefined> {
     const booking = this.bookings.get(id);
     if (booking) {
       booking.paymentIntentId = paymentIntentId;
@@ -241,9 +242,9 @@ export class MemStorage implements IStorage {
   }
 
   // Contact Messages
-  async createContactMessage(insertMessage: InsertContactMessage): Promise<ContactMessage> {
+  async createContactMessage(insertMessage: any): Promise<any> {
     const id = this.currentContactId++;
-    const message: ContactMessage = { 
+    const message: any = { 
       ...insertMessage, 
       id,
       createdAt: new Date()
@@ -252,7 +253,7 @@ export class MemStorage implements IStorage {
     return message;
   }
 
-  async getAllContactMessages(): Promise<ContactMessage[]> {
+  async getAllContactMessages(): Promise<any[]> {
     return Array.from(this.contactMessages.values());
   }
 }

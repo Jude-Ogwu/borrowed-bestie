@@ -109,7 +109,7 @@ export default function Home() {
                   onClick={() => scrollToSection('listeners')}
                   variant="outline"
                   size="lg"
-                  className="border-2 border-teal-500 text-teal-600 hover:bg-teal-50 text-lg px-8 py-4"
+                  className="border-2 border-teal-500 text-teal-600 hover:bg-teal-50 hover:text-teal-700 text-lg px-8 py-4"
                 >
                   Meet Our Besties
                 </Button>
@@ -170,7 +170,7 @@ export default function Home() {
                 <div className="w-24 h-24 bg-gradient-teal rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all transform group-hover:scale-105">
                   <Search className="text-white" size={32} />
                 </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-coral-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
                   1
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function Home() {
                 <div className="w-24 h-24 bg-gradient-lavender rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all transform group-hover:scale-105">
                   <MessageCircle className="text-white" size={32} />
                 </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-coral-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
                   3
                 </div>
               </div>
