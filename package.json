@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node server-entry.cjs",
-    "build": "node build-for-render.js",
+    "build": "npm run build:client && node build-for-render.js",
+    "build:client": "vite build",
     "build:static": "node build-static-site.js",
     "start": "node dist/server.js",
     "check": "tsc",

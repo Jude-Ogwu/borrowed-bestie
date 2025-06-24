@@ -2,17 +2,33 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { exec } from 'child_process';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Create dist directory if it doesn't exist
 if (!fs.existsSync(path.join(__dirname, 'dist'))) {
-  fs.mkdirSync(path.join(__dirname, 'dist'));
+  fs.mkdirSync(path.join(__dirname, 'dist'), { recursive: true });
 }
 
-// Create a simple server.js file in the dist directory
+console.log('Building React client application...');
+try {
+  // We assume the client was built by npm run build:client before this script
+  console.log('Client build should be complete, checking for files...');
+  
+  // Locate the built client files (check if they exist)
+  const clientDistDir = path.join(__dirname, 'dist', 'public');
+  if (!fs.existsSync(clientDistDir) || !fs.readdirSync(clientDistDir).length) {
+    console.error('Client build files not found. Make sure to run "npm run build:client" first');
+    process.exit(1);
+  }
+} catch (error) {
+  console.error('Failed to verify client build:', error);
+  process.exit(1);
+}
+
+// Create a server.js file in the dist directory
 const serverContent = `
 import express from 'express';
 import path from 'path';
@@ -111,155 +127,11 @@ app.get('/api/listeners', (req, res) => {
   res.json(listeners);
 });
 
-// Create dist/public directory if it doesn't exist
+// Serve static files from the built client app
 const publicDir = path.join(__dirname, 'public');
-if (!fs.existsSync(publicDir)) {
-  fs.mkdirSync(publicDir, { recursive: true });
-}
-
-// Create a simple index.html file if it doesn't exist
-const indexPath = path.join(publicDir, 'index.html');
-if (!fs.existsSync(indexPath)) {
-  fs.writeFileSync(indexPath, \`
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Borrowed Bestie</title>
-      <style>
-        body {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 2rem;
-          color: #333;
-        }
-        h1 {
-          color: #0d9488;
-          margin-bottom: 1rem;
-        }
-        p {
-          line-height: 1.6;
-        }
-        .container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          min-height: 80vh;
-          text-align: center;
-        }
-        .card {
-          background: white;
-          border-radius: 8px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-          padding: 2rem;
-          margin: 2rem 0;
-          max-width: 600px;
-        }
-        .button {
-          background-color: #0d9488;
-          color: white;
-          border: none;
-          padding: 0.75rem 1.5rem;
-          border-radius: 0.375rem;
-          font-weight: bold;
-          cursor: pointer;
-        }
-        .listeners {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-          gap: 2rem;
-          margin-top: 2rem;
-        }
-        .listener-card {
-          background: white;
-          border-radius: 8px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-          overflow: hidden;
-        }
-        .listener-img {
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-        }
-        .listener-info {
-          padding: 1.5rem;
-        }
-        .listener-name {
-          font-size: 1.25rem;
-          font-weight: bold;
-          margin-bottom: 0.5rem;
-        }
-        .listener-bio {
-          margin-bottom: 1rem;
-          font-size: 0.875rem;
-        }
-        .tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-        .tag {
-          background: #e6f7f5;
-          color: #0d9488;
-          padding: 0.25rem 0.75rem;
-          border-radius: 9999px;
-          font-size: 0.75rem;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <div class="card">
-          <h1>Borrowed Bestie</h1>
-          <p>Connect with trained listeners for confidential peer support. No therapy, no judgment—just genuine human connection when you need it most.</p>
-        </div>
-        
-        <h2>Our Besties</h2>
-        <div id="listeners" class="listeners">
-          <!-- Listeners will be loaded here -->
-        </div>
-      </div>
-      
-      <script>
-        // Fetch listeners from API
-        fetch('/api/listeners')
-          .then(response => response.json())
-          .then(listeners => {
-            const listenersContainer = document.getElementById('listeners');
-            
-            listeners.forEach(listener => {
-              const card = document.createElement('div');
-              card.className = 'listener-card';
-              
-              const specialtiesHtml = listener.specialties.map(specialty => 
-                '<span class="tag">' + specialty + '</span>'
-              ).join('');
-              
-              card.innerHTML = 
-                '<img src="' + listener.imageUrl + '" alt="' + listener.name + '" class="listener-img">' +
-                '<div class="listener-info">' +
-                  '<div class="listener-name">' + listener.name + '</div>' +
-                  '<div class="listener-bio">' + listener.bio + '</div>' +
-                  '<div class="tags">' + specialtiesHtml + '</div>' +
-                '</div>';
-              
-              listenersContainer.appendChild(card);
-            });
-          })
-          .catch(error => console.error('Error fetching listeners:', error));
-      </script>
-    </body>
-  </html>
-  \`);
-}
-
-// Serve static files from the public directory
 app.use(express.static(publicDir));
 
-// For all other routes, serve index.html
+// For all other routes, serve index.html (for client-side routing)
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicDir, 'index.html'));
 });
