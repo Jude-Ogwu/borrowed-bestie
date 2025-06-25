@@ -146,11 +146,13 @@ export default function FAQ() {
               <CollapsibleTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between p-6 h-auto text-left hover:bg-slate-100 dark:hover:bg-slate-700"
+                  className="w-full flex justify-between p-6 h-auto text-left hover:bg-slate-100 dark:hover:bg-slate-700"
                 >
-                  <h3 className="text-lg font-semibold text-slate-800 dark:text-white pr-4">
-                    {faq.question}
-                  </h3>
+                  <div className="flex-grow pr-4">
+                    <h3 className="text-lg font-semibold text-slate-800 dark:text-white break-words whitespace-normal">
+                      {faq.question}
+                    </h3>
+                  </div>
                   <ChevronDown
                     className={`text-slate-500 dark:text-slate-400 transition-transform flex-shrink-0 ${
                       openItems.has(faq.id) ? "rotate-180" : ""
