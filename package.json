@@ -10,6 +10,7 @@
     "build:static": "node build-static-site.js",
     "start": "node dist/server.js",
     "check": "tsc",
+    "deploy": "node deploy.js",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {

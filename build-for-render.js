@@ -40,6 +40,9 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// App start time for uptime calculations
+const appStartTime = new Date();
+
 const app = express();
 
 // Parse JSON bodies
@@ -51,6 +54,24 @@ function log(message) {
   const time = new Date().toLocaleTimeString();
   console.log(\`\${time} [server] \${message}\`);
 }
+
+// Add a health check endpoint - this helps with monitoring and quicker startup detection
+app.get('/health', (req, res) => {
+  const uptime = Math.round((new Date() - appStartTime) / 1000);
+  res.status(200).json({ 
+    status: 'ok',
+    uptime: \`\${uptime}s\`
+  });
+});
+
+// Setup static file serving first for better performance
+// Serve static files from the built client app with aggressive caching
+const publicDir = path.join(__dirname, 'public');
+app.use(express.static(publicDir, {
+  maxAge: '1d', // Cache static assets for 1 day
+  etag: true,
+  lastModified: true
+}));
 
 // Setup API routes
 app.get('/api/listeners', (req, res) => {
@@ -127,10 +148,6 @@ app.get('/api/listeners', (req, res) => {
   res.json(listeners);
 });
 
-// Serve static files from the built client app
-const publicDir = path.join(__dirname, 'public');
-app.use(express.static(publicDir));
-
 // For all other routes, serve index.html (for client-side routing)
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicDir, 'index.html'));
@@ -142,9 +159,20 @@ const PORT = process.env.PORT || 10000;
 // Create HTTP server
 const server = createServer(app);
 
+// Send "ready" message to process manager
+process.on('message', (message) => {
+  if (message === 'ready') {
+    process.send('ready');
+  }
+});
+
 // Start server
 server.listen(PORT, '0.0.0.0', () => {
   log(\`Server running on port \${PORT}\`);
+  // Indicate that the server is ready
+  if (process.send) {
+    process.send('ready');
+  }
 });
 
 export default app;

@@ -10,4 +10,9 @@ services:
       - key: PORT
         value: 10000
     plan: free
-    region: ohio 
+    region: ohio
+    # Keep the service warm to avoid cold starts
+    preboot:
+      enabled: true
+      activeDeadlineSeconds: 10
+    healthCheckPath: /health 
