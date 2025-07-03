@@ -6,13 +6,13 @@ import type { Listener } from "@shared/schema";
 export const mockListeners: Listener[] = [
   {
     id: 1,
-    name: "Sarah Chen",
-    bio: "Licensed social worker with 8 years experience. Specializes in anxiety management and workplace stress. Fluent in English and Mandarin.",
+    name: "Annie Gonyora",
+    bio: "Licensed social worker with 8 years experience. Specializes in anxiety management and workplace stress. Fluent in English.",
     specialties: ["Anxiety", "Stress", "Career"],
-    languages: ["English", "中文"],
+    languages: ["English"],
     rating: "4.9",
     reviewCount: 127,
-    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    imageUrl: "/annie_gonyora.png",
     isAvailable: true,
   },
   {

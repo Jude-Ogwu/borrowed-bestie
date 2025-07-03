@@ -19,7 +19,7 @@ export default function About() {
             <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-6">Meet Annie, Our Founder</h2>
             <div className="space-y-6 text-slate-600 dark:text-slate-300">
               <p className="text-lg leading-relaxed">
-                Hi, I'm Annie, and I created Borrowed Bestie after experiencing firsthand how powerful it can be to simply have someone listen—really listen—when you're going through a tough time.
+                Hi, I'm Annie Gonyora, and I created Borrowed Bestie after experiencing firsthand how powerful it can be to simply have someone listen—really listen—when you're going through a tough time.
               </p>
               <p className="leading-relaxed">
                 After struggling with anxiety during a major career transition, I found that what I needed most wasn't therapy or advice, but genuine human connection. Someone who could hold space for my feelings without judgment or trying to "fix" me.
@@ -35,8 +35,8 @@ export default function About() {
           
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&h=800&fit=crop"
-              alt="Annie, founder of Borrowed Bestie, in a welcoming coffee shop setting"
+              src="/annie_gonyora.png"
+              alt="Annie Gonyora, founder of Borrowed Bestie"
               className="rounded-2xl shadow-2xl w-full h-auto"
             />
             
@@ -162,11 +162,11 @@ export default function About() {
           <Card className="text-center bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
             <CardContent className="p-8">
               <img
-                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face"
+                src="/annie_gonyora.png"
                 alt="Annie - Founder & CEO"
                 className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
               />
-              <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-2">Annie Chen</h3>
+              <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-2">Annie Gonyora</h3>
               <Badge variant="secondary" className="mb-3">Founder & CEO</Badge>
               <p className="text-slate-600 dark:text-slate-300 text-sm">
                 Former tech executive turned mental health advocate with a passion for human connection.
