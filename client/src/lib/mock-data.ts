@@ -7,7 +7,7 @@ export const mockListeners: Listener[] = [
   {
     id: 1,
     name: "Annie Gonyora",
-    bio: "Licensed social worker with 8 years experience. Specializes in anxiety management and workplace stress. Fluent in English.",
+    bio: "Licensed social worker with 8 years experience. Specializes in anxiety management and workplace stress. Fluent in English only.",
     specialties: ["Anxiety", "Stress", "Career"],
     languages: ["English"],
     rating: "4.9",
