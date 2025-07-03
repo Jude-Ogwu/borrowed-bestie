@@ -126,8 +126,8 @@ export default function Home() {
             
             <div className="relative">
               <img
-                src="/annie_gonyora.png"
-                alt="Annie Gonyora, founder of Borrowed Bestie"
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=800&fit=crop"
+                alt="Two people having a supportive conversation in a peaceful setting"
                 className="rounded-3xl shadow-2xl w-full h-auto"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
