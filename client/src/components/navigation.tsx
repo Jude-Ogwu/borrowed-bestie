@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Heart, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { BookingModal } from "./booking-modal";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -43,9 +43,7 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-teal rounded-lg flex items-center justify-center">
-                <Heart className="text-white" size={16} />
-              </div>
+              <img src="/new_logo.jpg" alt="Borrowed Bestie Logo" className="w-10 h-10" />
               <span className="text-xl font-bold text-slate-800 dark:text-white">Borrowed Bestie</span>
             </Link>
 
