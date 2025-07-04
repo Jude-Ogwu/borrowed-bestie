@@ -5,12 +5,14 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ShoppingCart, UserCircle } from "lucide-react";
 import { BookingModal } from "./booking-modal";
 import { ThemeToggle } from "./theme-toggle";
+import { useMobile } from "@/hooks/use-mobile";
 
 export function Navigation() {
   const [location] = useLocation();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const isMobile = useMobile();
 
   useEffect(() => {
     // Check if user is logged in as admin
@@ -48,11 +50,17 @@ export function Navigation() {
   return (
     <>
       <nav className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <img src="/new_logo.jpg" alt="Borrowed Bestie Logo" className="w-10 h-10" />
-              <span className="text-xl font-bold text-slate-800 dark:text-white">Borrowed Bestie</span>
+            <Link href="/" className="flex items-center space-x-1 sm:space-x-2">
+              <img 
+                src="/new_logo.jpg" 
+                alt="Borrowed Bestie Logo" 
+                className="w-8 h-8 sm:w-10 sm:h-10" 
+              />
+              <span className="text-lg sm:text-xl font-bold text-slate-800 dark:text-white hidden xs:block">
+                Borrowed Bestie
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -78,27 +86,33 @@ export function Navigation() {
               ))}
             </div>
 
-            <div className="flex items-center space-x-4">
-              <ThemeToggle />
+            <div className="flex items-center space-x-1 sm:space-x-4">
+              {/* Only show on larger screens */}
+              <div className="hidden sm:block">
+                <ThemeToggle />
+              </div>
               
-              {/* Marketplace Cart Link */}
-              <Link href="/marketplace" className="text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
+              {/* Marketplace Cart Link - Only show on larger screens */}
+              <Link 
+                href="/marketplace" 
+                className="hidden sm:block text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400"
+              >
                 <ShoppingCart className="h-5 w-5" />
               </Link>
               
-              {/* Admin Area */}
+              {/* Admin Area - Only show on larger screens */}
               <Link 
                 href={isAdmin ? "/admin" : "/admin-login"} 
-                className="text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400"
+                className="hidden sm:block text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400"
               >
                 <UserCircle className="h-5 w-5" />
               </Link>
               
               <Button
                 onClick={() => setIsBookingModalOpen(true)}
-                className="bg-gradient-teal text-white hover:bg-teal-600 shadow-lg"
+                className="bg-gradient-teal text-white hover:bg-teal-600 shadow-lg text-xs sm:text-sm px-2 sm:px-4"
               >
-                Book a Call
+                {isMobile ? "Book" : "Book a Call"}
               </Button>
 
               {/* Mobile Menu */}
@@ -151,6 +165,12 @@ export function Navigation() {
                         <UserCircle className="mr-2 h-5 w-5" />
                         <span>Admin</span>
                       </Link>
+                    </div>
+                    
+                    {/* Theme Toggle in Mobile Menu */}
+                    <div className="flex items-center space-x-4">
+                      <span className="text-slate-600 dark:text-slate-300">Theme</span>
+                      <ThemeToggle />
                     </div>
                     
                     <Button
