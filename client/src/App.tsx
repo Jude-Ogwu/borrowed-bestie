@@ -13,6 +13,8 @@ import FAQ from "@/pages/faq";
 import Contact from "@/pages/contact";
 import Checkout from "@/pages/checkout";
 import Admin from "@/pages/admin";
+import AdminLogin from "@/pages/admin-login";
+import Marketplace from "@/pages/marketplace";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -28,6 +30,8 @@ function Router() {
           <Route path="/contact" component={Contact} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/admin" component={Admin} />
+          <Route path="/admin-login" component={AdminLogin} />
+          <Route path="/marketplace" component={Marketplace} />
           <Route component={NotFound} />
         </Switch>
       </main>

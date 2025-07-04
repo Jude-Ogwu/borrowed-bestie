@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, ShoppingCart, UserCircle } from "lucide-react";
 import { BookingModal } from "./booking-modal";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -10,10 +10,18 @@ export function Navigation() {
   const [location] = useLocation();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    // Check if user is logged in as admin
+    const isAuthenticated = localStorage.getItem("adminAuthenticated") === "true";
+    setIsAdmin(isAuthenticated);
+  }, [location]);
 
   const navItems = [
     { href: "/", label: "How It Works", isScroll: true, sectionId: "how-it-works" },
     { href: "/listeners", label: "Our Besties" },
+    { href: "/marketplace", label: "Marketplace" },
     { href: "/about", label: "About" },
     { href: "/faq", label: "Safety & FAQ" },
     { href: "/contact", label: "Contact" },
@@ -72,6 +80,20 @@ export function Navigation() {
 
             <div className="flex items-center space-x-4">
               <ThemeToggle />
+              
+              {/* Marketplace Cart Link */}
+              <Link href="/marketplace" className="text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
+                <ShoppingCart className="h-5 w-5" />
+              </Link>
+              
+              {/* Admin Area */}
+              <Link 
+                href={isAdmin ? "/admin" : "/admin-login"} 
+                className="text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400"
+              >
+                <UserCircle className="h-5 w-5" />
+              </Link>
+              
               <Button
                 onClick={() => setIsBookingModalOpen(true)}
                 className="bg-gradient-teal text-white hover:bg-teal-600 shadow-lg"
@@ -108,6 +130,29 @@ export function Navigation() {
                         </Link>
                       )
                     ))}
+                    
+                    <div className="flex items-center space-x-4 pt-2">
+                      <Link 
+                        href="/marketplace"
+                        className="flex items-center text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <ShoppingCart className="mr-2 h-5 w-5" />
+                        <span>Marketplace</span>
+                      </Link>
+                    </div>
+                    
+                    <div className="flex items-center space-x-4">
+                      <Link 
+                        href={isAdmin ? "/admin" : "/admin-login"}
+                        className="flex items-center text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <UserCircle className="mr-2 h-5 w-5" />
+                        <span>Admin</span>
+                      </Link>
+                    </div>
+                    
                     <Button
                       onClick={() => {
                         setIsBookingModalOpen(true);
