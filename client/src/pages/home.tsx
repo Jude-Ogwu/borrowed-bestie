@@ -77,7 +77,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="text-teal-500 dark:text-teal-400" size={16} />
-                  <span>Available 24/7</span>
+                  <span>Mon-Fri 9am-6pm, Sat 10am-4pm</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Shield className="text-teal-500 dark:text-teal-400" size={16} />
