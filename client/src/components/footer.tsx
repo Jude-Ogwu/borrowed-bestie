@@ -1,5 +1,4 @@
 import { Link } from "wouter";
-import { Heart } from "lucide-react";
 
 export function Footer() {
   return (
@@ -8,9 +7,7 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-teal rounded-lg flex items-center justify-center">
-                <Heart className="text-white" size={16} />
-              </div>
+              <img src="/new_logo.jpg" alt="Borrowed Bestie Logo" className="w-10 h-10" />
               <span className="text-xl font-bold">Borrowed Bestie</span>
             </div>
             <p className="text-slate-300 mb-6 max-w-md">
