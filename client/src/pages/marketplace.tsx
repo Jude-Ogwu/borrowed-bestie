@@ -6,139 +6,140 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Search, ShoppingCart, BookOpen, Headphones, Video } from 'lucide-react';
+import { Search, ShoppingCart, BookOpen } from 'lucide-react';
 
-// Define product types and their corresponding icons
-const productTypeIcons = {
-  "PDF": BookOpen,
-  "Audio": Headphones,
-  "Video": Video,
-  "All": Search
-};
-
-// Sample digital products data
-const digitalProducts = [
+// Sample books data
+const books = [
   {
     id: 1,
-    name: "Stress Management Guide",
-    description: "A comprehensive guide for managing daily stress and anxiety.",
-    price: "12.99",
-    type: "PDF",
-    author: "Dr. Sarah Chen",
-    imageUrl: "https://images.unsplash.com/photo-1606103920295-2a77870523a6?w=600&h=400&fit=crop",
+    title: "Emotional Intelligence: Managing Emotions in Daily Life",
+    description: "A comprehensive guide to understanding and managing your emotions for better relationships and mental well-being.",
+    price: "19.99",
+    author: "Annie Gonyora",
+    imageUrl: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&h=400&fit=crop",
     rating: 4.8,
     reviews: 42,
-    pages: 85,
-    popular: true
+    pages: 248,
+    category: "Self-Help",
+    featured: true,
+    publishDate: "2024"
   },
   {
     id: 2,
-    name: "Mindfulness Meditation Audio Collection",
-    description: "30-minute guided meditation sessions for relaxation and focus.",
-    price: "9.99",
-    type: "Audio",
-    author: "Marcus Johnson",
-    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop",
-    rating: 4.7,
+    name: "The Healing Journey: Overcoming Trauma and Finding Peace",
+    description: "A step-by-step guide to healing from past traumas and building resilience for a more peaceful future.",
+    price: "24.99",
+    author: "Annie Gonyora",
+    imageUrl: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&h=400&fit=crop",
+    rating: 4.9,
     reviews: 36,
-    duration: "3 hours total",
-    popular: true
+    pages: 312,
+    category: "Psychology",
+    featured: true,
+    publishDate: "2023"
   },
   {
     id: 3,
-    name: "Emotional Resilience Course",
-    description: "5-part video course on building emotional resilience.",
-    price: "29.99",
-    type: "Video",
-    author: "Lisa Rodriguez",
-    imageUrl: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=600&h=400&fit=crop",
-    rating: 4.9,
+    name: "Mindful Communication: Building Stronger Relationships",
+    description: "Learn how to communicate effectively and mindfully to build deeper connections with others.",
+    price: "17.99",
+    author: "Annie Gonyora & Dr. Sarah Chen",
+    imageUrl: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=600&h=400&fit=crop",
+    rating: 4.7,
     reviews: 28,
-    duration: "2.5 hours total",
-    popular: false
+    pages: 186,
+    category: "Relationships",
+    featured: false,
+    publishDate: "2024"
   },
   {
     id: 4,
-    name: "Anxiety Relief Techniques",
-    description: "Quick reference guide to anxiety relief techniques.",
-    price: "7.99",
-    type: "PDF",
+    name: "Anxiety Relief: Practical Strategies for Modern Life",
+    description: "A practical guide with evidence-based techniques to manage anxiety in today's fast-paced world.",
+    price: "15.99",
     author: "Annie Gonyora",
-    imageUrl: "https://images.unsplash.com/photo-1474418397713-2d13325bea61?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=400&fit=crop",
     rating: 4.6,
     reviews: 19,
-    pages: 32,
-    popular: true
+    pages: 164,
+    category: "Mental Health",
+    featured: true,
+    publishDate: "2022"
   },
   {
     id: 5,
-    name: "Sleep Improvement Audio Program",
-    description: "A collection of soothing sounds and guided relaxations.",
-    price: "14.99",
-    type: "Audio",
-    author: "Dr. Marcus Johnson",
-    imageUrl: "https://images.unsplash.com/photo-1455642305361-e3f123e8538d?w=600&h=400&fit=crop",
+    name: "Finding Your Purpose: A Guide to Meaningful Living",
+    description: "Discover your life's purpose and learn how to align your daily actions with your deepest values.",
+    price: "21.99",
+    author: "Annie Gonyora",
+    imageUrl: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&h=400&fit=crop",
     rating: 4.8,
     reviews: 53,
-    duration: "4 hours total",
-    popular: false
+    pages: 224,
+    category: "Personal Development",
+    featured: false,
+    publishDate: "2023"
   },
   {
     id: 6,
-    name: "Relationship Communication Workshop",
-    description: "Learn effective communication skills for all relationships.",
-    price: "19.99",
-    type: "Video",
-    author: "Annie Gonyora & Lisa Rodriguez",
-    imageUrl: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=600&h=400&fit=crop",
+    name: "The Art of Listening: Becoming a Better Support Person",
+    description: "Learn the essential skills of active listening and emotional support to help those around you.",
+    price: "18.99",
+    author: "Annie Gonyora",
+    imageUrl: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&h=400&fit=crop",
     rating: 4.9,
     reviews: 31,
-    duration: "3 hours total",
-    popular: true
+    pages: 192,
+    category: "Communication",
+    featured: true,
+    publishDate: "2024"
   },
 ];
 
 export default function Marketplace() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedType, setSelectedType] = useState("All");
-  const [sortOption, setSortOption] = useState("popular");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortOption, setSortOption] = useState("featured");
   const [activeTab, setActiveTab] = useState("all");
   const [cart, setCart] = useState<number[]>([]);
 
-  // Filter products based on search, type, and active tab
-  const filteredProducts = digitalProducts.filter(product => {
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          product.author.toLowerCase().includes(searchTerm.toLowerCase());
+  // Filter books based on search, category, and active tab
+  const filteredBooks = books.filter(book => {
+    const matchesSearch = book.name?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          book.title?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          book.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          book.author.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesType = selectedType === "All" || product.type === selectedType;
+    const matchesCategory = selectedCategory === "All" || book.category === selectedCategory;
     const matchesTab = activeTab === "all" || 
-                       (activeTab === "popular" && product.popular) ||
-                       (activeTab === product.type.toLowerCase());
+                       (activeTab === "featured" && book.featured) ||
+                       (activeTab === book.category.toLowerCase());
     
-    return matchesSearch && matchesType && matchesTab;
+    return matchesSearch && matchesCategory && matchesTab;
   });
 
-  // Sort products
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sortOption === "popular") {
-      return b.reviews - a.reviews;
+  // Sort books
+  const sortedBooks = [...filteredBooks].sort((a, b) => {
+    if (sortOption === "featured") {
+      return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+    } else if (sortOption === "newest") {
+      return b.publishDate.localeCompare(a.publishDate);
+    } else if (sortOption === "rating") {
+      return b.rating - a.rating;
     } else if (sortOption === "priceLow") {
       return parseFloat(a.price) - parseFloat(b.price);
     } else if (sortOption === "priceHigh") {
       return parseFloat(b.price) - parseFloat(a.price);
-    } else if (sortOption === "rating") {
-      return b.rating - a.rating;
     }
     return 0;
   });
 
-  const addToCart = (productId: number) => {
-    setCart([...cart, productId]);
+  const addToCart = (bookId: number) => {
+    setCart([...cart, bookId]);
   };
 
-  const removeFromCart = (productId: number) => {
-    const index = cart.indexOf(productId);
+  const removeFromCart = (bookId: number) => {
+    const index = cart.indexOf(bookId);
     if (index > -1) {
       const newCart = [...cart];
       newCart.splice(index, 1);
@@ -146,16 +147,18 @@ export default function Marketplace() {
     }
   };
 
-  const isInCart = (productId: number) => {
-    return cart.includes(productId);
+  const isInCart = (bookId: number) => {
+    return cart.includes(bookId);
   };
+
+  const categories = ["All", "Self-Help", "Psychology", "Relationships", "Mental Health", "Personal Development", "Communication"];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">Digital Marketplace</h1>
+        <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">Books by Annie Gonyora</h1>
         <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-          Discover resources to support your emotional wellbeing and personal growth
+          Discover books to support your emotional wellbeing and personal growth
         </p>
       </div>
 
@@ -163,7 +166,7 @@ export default function Marketplace() {
         <div className="relative flex-grow">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={18} />
           <Input 
-            placeholder="Search resources..." 
+            placeholder="Search books..." 
             className="pl-10"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -171,15 +174,14 @@ export default function Marketplace() {
         </div>
         
         <div className="flex gap-4">
-          <Select value={selectedType} onValueChange={setSelectedType}>
+          <Select value={selectedCategory} onValueChange={setSelectedCategory}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Resource Type" />
+              <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="All">All Types</SelectItem>
-              <SelectItem value="PDF">PDFs</SelectItem>
-              <SelectItem value="Audio">Audio</SelectItem>
-              <SelectItem value="Video">Video</SelectItem>
+              {categories.map(category => (
+                <SelectItem key={category} value={category}>{category}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
           
@@ -188,7 +190,8 @@ export default function Marketplace() {
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="popular">Most Popular</SelectItem>
+              <SelectItem value="featured">Featured</SelectItem>
+              <SelectItem value="newest">Newest</SelectItem>
               <SelectItem value="rating">Highest Rated</SelectItem>
               <SelectItem value="priceLow">Price: Low to High</SelectItem>
               <SelectItem value="priceHigh">Price: High to Low</SelectItem>
@@ -203,74 +206,71 @@ export default function Marketplace() {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
-        <TabsList className="grid grid-cols-4 w-full max-w-md mx-auto">
-          <TabsTrigger value="all">All</TabsTrigger>
-          <TabsTrigger value="pdf">PDFs</TabsTrigger>
-          <TabsTrigger value="audio">Audio</TabsTrigger>
-          <TabsTrigger value="video">Video</TabsTrigger>
+        <TabsList className="grid grid-cols-3 w-full max-w-md mx-auto">
+          <TabsTrigger value="all">All Books</TabsTrigger>
+          <TabsTrigger value="featured">Featured</TabsTrigger>
+          <TabsTrigger value="newest">New Releases</TabsTrigger>
         </TabsList>
       </Tabs>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {sortedProducts.map((product) => {
-          const IconComponent = productTypeIcons[product.type as keyof typeof productTypeIcons];
-          
+        {sortedBooks.map((book) => {          
           return (
-            <Card key={product.id} className="overflow-hidden flex flex-col h-full">
-              <div className="relative aspect-video">
+            <Card key={book.id} className="overflow-hidden flex flex-col h-full">
+              <div className="relative aspect-[3/4]">
                 <img 
-                  src={product.imageUrl} 
-                  alt={product.name} 
+                  src={book.imageUrl} 
+                  alt={book.name || book.title} 
                   className="w-full h-full object-cover"
                 />
                 <Badge className="absolute top-3 right-3 bg-white/80 text-slate-800">
-                  {product.type}
+                  {book.category}
                 </Badge>
               </div>
               <CardContent className="p-6 flex-grow flex flex-col">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-xl font-semibold text-slate-800 dark:text-white">{product.name}</h3>
-                  {product.popular && (
-                    <Badge variant="secondary" className="bg-amber-100 text-amber-800">Popular</Badge>
+                  <h3 className="text-xl font-semibold text-slate-800 dark:text-white">{book.title || book.name}</h3>
+                  {book.featured && (
+                    <Badge variant="secondary" className="bg-amber-100 text-amber-800">Featured</Badge>
                   )}
                 </div>
                 
                 <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2 flex-grow">
-                  {product.description}
+                  {book.description}
                 </p>
                 
                 <div className="text-sm text-slate-500 dark:text-slate-400 mb-3">
-                  By {product.author}
+                  By {book.author}
                 </div>
                 
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-1">
                     <span className="text-yellow-500">★</span>
-                    <span className="text-sm font-medium">{product.rating}</span>
-                    <span className="text-xs text-slate-500">({product.reviews} reviews)</span>
+                    <span className="text-sm font-medium">{book.rating}</span>
+                    <span className="text-xs text-slate-500">({book.reviews} reviews)</span>
                   </div>
                   <div className="flex items-center">
-                    <IconComponent size={16} className="text-slate-400 mr-1" />
+                    <BookOpen size={16} className="text-slate-400 mr-1" />
                     <span className="text-xs text-slate-500">
-                      {product.type === "PDF" ? `${product.pages} pages` : product.duration}
+                      {book.pages} pages
                     </span>
                   </div>
                 </div>
                 
                 <div className="flex items-center justify-between mt-auto">
-                  <span className="text-2xl font-bold text-slate-800 dark:text-white">${product.price}</span>
-                  {isInCart(product.id) ? (
+                  <span className="text-2xl font-bold text-slate-800 dark:text-white">${book.price}</span>
+                  {isInCart(book.id) ? (
                     <Button 
                       variant="outline" 
                       className="border-red-500 text-red-500 hover:bg-red-50"
-                      onClick={() => removeFromCart(product.id)}
+                      onClick={() => removeFromCart(book.id)}
                     >
                       Remove
                     </Button>
                   ) : (
                     <Button 
                       className="bg-gradient-teal text-white hover:bg-teal-600"
-                      onClick={() => addToCart(product.id)}
+                      onClick={() => addToCart(book.id)}
                     >
                       <ShoppingCart className="mr-2" size={16} />
                       Add to Cart
@@ -283,10 +283,10 @@ export default function Marketplace() {
         })}
       </div>
       
-      {sortedProducts.length === 0 && (
+      {sortedBooks.length === 0 && (
         <div className="text-center py-16">
           <Search className="mx-auto mb-4 text-slate-400" size={48} />
-          <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-2">No products found</h3>
+          <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-2">No books found</h3>
           <p className="text-slate-600 dark:text-slate-300">
             Try adjusting your search or filter criteria
           </p>
