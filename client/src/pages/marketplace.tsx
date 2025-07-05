@@ -124,12 +124,12 @@ export default function Marketplace() {
       return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
     } else if (sortOption === "newest") {
       return b.publishDate.localeCompare(a.publishDate);
-    } else if (sortOption === "rating") {
-      return b.rating - a.rating;
     } else if (sortOption === "priceLow") {
       return parseFloat(a.price) - parseFloat(b.price);
     } else if (sortOption === "priceHigh") {
       return parseFloat(b.price) - parseFloat(a.price);
+    } else if (sortOption === "rating") {
+      return b.rating - a.rating;
     }
     return 0;
   });
@@ -262,7 +262,7 @@ export default function Marketplace() {
                   {isInCart(book.id) ? (
                     <Button 
                       variant="outline" 
-                      className="border-red-500 text-red-500 hover:bg-red-50"
+                      className="border-red-500 text-red-500 dark:text-red-400 hover:bg-red-500/10 dark:hover:bg-red-500/20 dark:border-red-400 dark:hover:text-red-300"
                       onClick={() => removeFromCart(book.id)}
                     >
                       Remove
