@@ -6,7 +6,7 @@ import { Menu } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { useMobile } from "@/hooks/use-mobile";
 
-export default function Navigation() {
+export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
   const isMobile = useMobile();
