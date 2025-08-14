@@ -19,9 +19,11 @@ import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    // Removed bg-background so the body gradient shows
+    <div className="min-h-screen flex flex-col">
       <Navigation />
-      <main className="flex-1 bg-background">
+      {/* Removed bg-background here too */}
+      <main className="flex-1">
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/listeners" component={Listeners} />

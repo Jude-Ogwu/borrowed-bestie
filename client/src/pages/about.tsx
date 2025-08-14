@@ -19,16 +19,16 @@ export default function About() {
             <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-6">Meet Annie, Our Founder</h2>
             <div className="space-y-6 text-slate-600 dark:text-slate-300">
               <p className="text-lg leading-relaxed">
-                Hi, I'm Annie Gonyora, and I created Borrowed Bestie after experiencing firsthand how powerful it can be to simply have someone listen—really listen—when you're going through a tough time.
+                Hi, my name is Annie Ari Gonyora, and I created Borrowed Bestie after experiencing firsthand how powerful it can be to simply have someone listen, I mean really listen , when you’re going through a tough time.
               </p>
               <p className="leading-relaxed">
-                After struggling with anxiety during a major career transition, I found that what I needed most wasn't therapy or advice, but genuine human connection. Someone who could hold space for my feelings without judgment or trying to "fix" me.
+                After struggling with anxiety during a major career transition and depression stemming from relocation, I found that what I needed most wasn’t therapy or advice, but genuine human connection. Someone who could hold space for my feelings without judgment or trying to “fix” me.
               </p>
               <p className="leading-relaxed">
-                That's when I realized there are so many people who have this incredible gift of listening, and so many others who just need someone to talk to. Borrowed Bestie bridges that gap, creating meaningful connections that help us all feel a little less alone.
+                That’s when i realized there are so many people who have this incredible gift of listening, and so many others who just need someone to talk to. Borrowed Bestie bridges that gap, creating meaningful connections that help us all feel a little less alone.
               </p>
               <p className="leading-relaxed">
-                What started as a personal struggle became a mission: to make emotional support accessible, affordable, and human. Because sometimes, you don't need professional therapy—you just need someone who cares enough to listen.
+                What started as a personal struggle became a mission: to make emotional support accessible, affordable and human. Because sometimes, you don’t need professional therapy, you just need someone who cares enough to listen.
               </p>
             </div>
           </div>
@@ -177,12 +177,12 @@ export default function About() {
           <Card className="text-center bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
             <CardContent className="p-8">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
-                alt="Dr. Marcus Johnson - Clinical Advisor"
+                src="/francis_munangi_mpindu.png"
+                alt="Dr. Francis Munangi Mpindu - Chief Strategic Officer"
                 className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
               />
-              <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-2">Dr. Marcus Johnson</h3>
-              <Badge variant="secondary" className="mb-3">Clinical Advisor</Badge>
+              <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-2">Dr. Francis Munangi Mpindu <br /><p className="text-sm">(PhD, MA, MDiv, MTS, BRE)</p></h3>
+              <Badge variant="secondary" className="mb-3">Chief Strategic Officer</Badge>
               <p className="text-slate-600 dark:text-slate-300 text-sm">
                 Licensed therapist ensuring our platform maintains the highest safety and ethical standards.
               </p>

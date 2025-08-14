@@ -38,7 +38,7 @@ Availability Indicator: "12 listeners available now" with live updates
  Buffer time management (5-10 min between sessions)
  Enhanced Filtering System
  Session Type: Quick Chat (15min), Deep Dive (30min), Extended Support (60min)
- Listener Specialties: Anxiety, Grief, Career Stress, Relationships, Life Transitions, LGBTQ+ Support
+ Listener Specialties: Anxiety, Grief, Career Stress, Relationships, Life Transitions, Support
  Languages: English, Spanish, French, Mandarin (expandable)
  Availability: Next 24hrs, This Week, Flexible
  Listener Gender: Option to filter by gender preference

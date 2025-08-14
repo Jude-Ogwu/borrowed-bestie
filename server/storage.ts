@@ -88,8 +88,8 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Lisa Rodriguez",
-        bio: "Psychology graduate specializing in LGBTQ+ support and young adult challenges. Creates inclusive and affirming spaces for all identities.",
-        specialties: ["LGBTQ+", "Young Adults", "Identity"],
+        bio: "Psychology graduate specializing in support and young adult challenges. Creates inclusive and affirming spaces for all identities.",
+        specialties: ["Young Adults", "Identity"],
         languages: ["English", "Français"],
         rating: "5.0",
         reviewCount: 73,
@@ -118,8 +118,8 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Alex Thompson",
-        bio: "Creative arts therapist specializing in depression support and creative expression as healing. Non-binary and LGBTQ+ affirming.",
-        specialties: ["Depression", "Creative Therapy", "LGBTQ+"],
+        bio: "Creative arts therapist specializing in depression support and creative expression as healing. Non-binary and affirming.",
+        specialties: ["Depression", "Creative Therapy"],
         languages: ["English"],
         rating: "4.8",
         reviewCount: 91,

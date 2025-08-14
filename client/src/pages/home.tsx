@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-warm dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      <section className="relative overflow-hidden dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400/10 to-teal-500/10 dark:from-purple-400/5 dark:to-teal-500/5 rounded-full blur-3xl transform translate-x-32 -translate-y-32"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-orange-400/10 to-teal-500/10 dark:from-orange-400/5 dark:to-teal-500/5 rounded-full blur-3xl transform -translate-x-32 translate-y-32"></div>
@@ -254,7 +254,7 @@ export default function Home() {
       </section>
 
       {/* Featured Listeners Section */}
-      <section id="listeners" className="py-24 bg-white dark:bg-slate-900">
+      <section id="listeners" className="py-24 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">Meet Our Besties</h2>

@@ -23,7 +23,7 @@ export default function Listeners() {
     "Career",
     "Relationships", 
     "Life Changes",
-    "LGBTQ+",
+    
     "Grief",
     "Stress"
   ];

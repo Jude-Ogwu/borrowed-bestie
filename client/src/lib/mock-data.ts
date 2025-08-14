@@ -29,8 +29,8 @@ export const mockListeners: Listener[] = [
   {
     id: 3,
     name: "Lisa Rodriguez",
-    bio: "Psychology graduate specializing in LGBTQ+ support and young adult challenges. Creates inclusive and affirming spaces for all identities.",
-    specialties: ["LGBTQ+", "Young Adults", "Identity"],
+    bio: "Psychology graduate specializing in support and young adult challenges. Creates inclusive and affirming spaces for all identities.",
+    specialties: ["Young Adults", "Identity"],
     languages: ["English", "Français"],
     rating: "5.0",
     reviewCount: 73,

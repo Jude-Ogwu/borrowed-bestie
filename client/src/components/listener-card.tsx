@@ -18,7 +18,7 @@ export function ListenerCard({ listener, onBookClick }: ListenerCardProps) {
       Relationships: "bg-coral-100 text-coral-600",
       "Life Changes": "bg-teal-100 text-teal-700",
       Grief: "bg-lavender-100 text-lavender-500",
-      "LGBTQ+": "bg-lavender-100 text-lavender-500",
+      
       "Young Adults": "bg-teal-100 text-teal-700",
       Identity: "bg-coral-100 text-coral-600",
     };

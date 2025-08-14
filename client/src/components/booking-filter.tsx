@@ -28,7 +28,7 @@ export function BookingFilter({ onFiltersChange }: BookingFilterProps) {
 
   const specialties = [
     "Anxiety", "Stress", "Career", "Relationships", "Life Changes", 
-    "Grief", "LGBTQ+", "Young Adults", "Identity"
+    "Grief", "Young Adults", "Identity"
   ];
 
   const languages = ["English", "Spanish", "French", "Mandarin"];

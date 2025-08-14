@@ -4,7 +4,10 @@ import * as fs from 'fs';
 import { createServer } from 'http';
 
 // For CommonJS compatibility
-let __dirname = __dirname || process.cwd();
+// Properly type and initialize __dirname
+const currentDirname: string = 
+  typeof __dirname !== "undefined" ? __dirname : process.cwd();
+
 let registerRoutes, setupVite, serveStatic, log;
 
 try {
@@ -20,6 +23,8 @@ try {
   console.error("Error importing modules:", error);
   process.exit(1);
 }
+
+// Rest of your code remains the same...}
 
 const app = express();
 app.use(express.json());

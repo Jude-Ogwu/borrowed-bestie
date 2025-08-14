@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 100%);
+  /* Gradient sampled from your image */
+  --background: linear-gradient(
+    135deg,
+    #bce2de 0%,
+    #eaf9f8 85%,
+    #ffffff 100%
+  );
+
   --foreground: hsl(20, 14.3%, 4.1%);
   --muted: hsl(60, 4.8%, 95.9%);
   --muted-foreground: hsl(25, 5.3%, 44.7%);
@@ -64,12 +71,28 @@
     @apply border-border;
   }
 
+  /* Make sure root/html/body spans the viewport so the gradient shows */
+  html, body, #root {
+    height: 100%;
+  }
+
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased text-foreground;
+    /* IMPORTANT: use background (not background-color) so gradients work */
+    background: var(--background);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
   }
 }
 
 @layer utilities {
+  /* Utility if you want to apply the exact background to another element */
+  .bg-background {
+    background: var(--background);
+  }
+
   .bg-gradient-warm {
     background: linear-gradient(135deg, var(--teal-50) 0%, white 50%, hsl(24, 100%, 97%) 100%);
   }
@@ -77,7 +100,8 @@
   .bg-gradient-teal {
     background: linear-gradient(135deg, var(--teal-500) 0%, var(--teal-600) 100%);
   }
-  
+  /* ... rest unchanged ... */
+
   .bg-gradient-coral {
     background: linear-gradient(135deg, var(--coral-500) 0%, var(--coral-600) 100%);
   }
