@@ -12,7 +12,4 @@ services:
     plan: free
     region: ohio
     # Keep the service warm to avoid cold starts
-    preboot:
-      enabled: true
-      activeDeadlineSeconds: 10
-    healthCheckPath: /health 
+    
